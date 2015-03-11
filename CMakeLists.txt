@@ -10,7 +10,7 @@ ELSE(NOT CMAKE_BUILD_TYPE)
 ENDIF(NOT CMAKE_BUILD_TYPE)
 
 # Default compilation settings
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++0x")
 
 # Build output checks
 OPTION(LIBTINS_BUILD_SHARED "Build libtins as a shared library." ON)
@@ -49,7 +49,7 @@ IF(WIN32)
 ENDIF(WIN32)
 
 # Compilation options
-OPTION(LIBTINS_ENABLE_CXX11 "Compile libtins with c++11 features" OFF)
+OPTION(LIBTINS_ENABLE_CXX11 "Compile libtins with c++11 features" 1)
 IF(LIBTINS_ENABLE_CXX11)
     SET(HAVE_CXX11 ON)
     INCLUDE(CheckCXX11Features)

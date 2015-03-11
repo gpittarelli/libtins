@@ -365,7 +365,18 @@ FileSniffer::FileSniffer(const string &file_name, const SnifferConfiguration& co
 
     // Configure the sniffer
     configuration.configure_sniffer_pre_activation(*this);
-    
+}
+
+FileSniffer::FileSniffer(FILE *fp, const SnifferConfiguration& configuration) {
+    char error[PCAP_ERRBUF_SIZE];
+    pcap_t *phandle = pcap_fopen_offline(fp, error);
+    if(!phandle) {
+        throw std::runtime_error(error);
+    }
+    set_pcap_handle(phandle);
+
+    // Configure the sniffer
+    configuration.configure_sniffer_pre_activation(*this);
 }
 
 FileSniffer::FileSniffer(const std::string &file_name, const std::string &filter)

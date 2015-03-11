@@ -356,6 +356,13 @@ namespace Tins {
         FileSniffer(const std::string &file_name, const SnifferConfiguration& configuration);
 
         /**
+         * \brief Constructs an instance of FileSniffer.
+         * \param file_name The pcap file which will be parsed.
+         * \param filter A capture filter to be used on the file.(optional);
+         */
+        FileSniffer(FILE *fp, const SnifferConfiguration& configuration);
+
+        /**
          * \deprecated Use the constructor that takes a SnifferConfiguration instead.
          *
          * \brief Constructs an instance of FileSniffer.
